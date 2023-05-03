@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const Login = () => {
+
+    const [wrongInfo, setwrongInfo] = useState("");
 
     const { signIn } = useContext(AuthContext);
 
@@ -22,8 +24,10 @@ const Login = () => {
                 form.reset();
             })
             .catch((error) => {
-                const errorMessage = error.message;
+                const errorMessage = error.message.replace("Firebase: ", "");
                 console.log(errorMessage);
+                setwrongInfo(errorMessage);
+                form.reset();
             });
 
     }
@@ -42,18 +46,21 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Enter Your Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="Type here..." className="input input-bordered" />
+                                <input type="email" name='email' placeholder="Type here..." className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Enter Your Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="Type here..." className="input input-bordered" />
+                                <input type="password" name='password' placeholder="Type here..." className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                                 <label className="label">
                                     <p href="#" className="label-text-alt">Don't have an account yet? <Link to="/register" className='link link-hover text-blue-700'>Sign Up.</Link></p>
+                                </label>
+                                <label className="label">
+                                    <p className="label-text-alt text-red-700">{wrongInfo}</p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">

@@ -32,16 +32,21 @@ const Header = () => {
                     <li className="navbar-item">
                         <Link to="/blog">Blog</Link>
                     </li>
-                    <li className="navbar-item">
+                    {!user && <li className="navbar-item">
                         <Link to="/login">Login</Link>
-                    </li>
-                    <li className="navbar-item">
+                    </li>}
+                    {!user && <li className="navbar-item">
                         <Link to="/register">Register</Link>
-                    </li>
+                    </li>}
                     {user ?
-                        <span className='flex flex-row gap-5 items-center'>
-                            <span>{user.email}</span>
-                            <button onClick={handleLogout} className="btn btn-warning">Logout</button>
+                        <span className='flex flex-col md:flex-row gap-5 items-center'>
+                            <div className="relative">
+                                <img src={user?.photoURL} alt="profile picute" className='h-12 w-12 rounded-full' />
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                    <p className="text-white text-lg font-bold">{user?.displayName}</p>
+                                </div>
+                            </div>
+                            <div><button onClick={handleLogout} className="btn btn-warning">Logout</button></div>
                         </span>
                         :
                         <></>}

@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
+
+    const [wrongpassword, setWrongPassword] = useState("");
 
     const { user, createUser } = useContext(AuthContext);
 
@@ -21,6 +23,14 @@ const Register = () => {
 
         // console.log(name, email, photoURL, password);
 
+        // Password validation
+    if (password.length < 8 || !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+        const errorMessage = "Password must be a minimum of eight characters and contain at least one letter and one number.";
+        setWrongPassword(errorMessage);
+        return;
+    }
+    
+
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -29,8 +39,11 @@ const Register = () => {
                 updateUserData(user, name, photo)
             })
             .catch((error) => {
-                const errorMessage = error.message;
+                const errorMessage = error.message.replace("Firebase: ", "");
                 console.log(errorMessage)
+                setWrongPassword(errorMessage);
+                form.reset();
+                
             });
 
         // Update user Data
@@ -61,27 +74,30 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Enter Your Name</span>
                                 </label>
-                                <input type="text" name='name' placeholder="Type here..." className="input input-bordered" />
+                                <input type="text" name='name' placeholder="Type here..." className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Enter Your Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="Type here..." className="input input-bordered" />
+                                <input type="email" name='email' placeholder="Type here..." className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Enter Your Photo URL</span>
                                 </label>
-                                <input type="text" name='photoURL' placeholder="Type here..." className="input input-bordered" />
+                                <input type="text" name='photoURL' placeholder="Type here..." className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Enter Your Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="Type here..." className="input input-bordered" />
+                                <input type="password" name='password' placeholder="Type here..." className="input input-bordered" required />
                                 <label className="label">
                                     <p href="#" className="label-text-alt">Have an account? <Link to="/login" className='link link-hover text-blue-700'>Sign in.</Link></p>
+                                </label>
+                                <label className="label">
+                                    <p className="label-text-alt text-red-700">{wrongpassword}</p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
