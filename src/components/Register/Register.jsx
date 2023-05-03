@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
@@ -13,23 +14,37 @@ const Register = () => {
         // console.log(event.target.name.value);
 
         const form = event.target;
-        const displayName = event.target.name.value;
+        const name = event.target.name.value;
         const email = event.target.email.value;
-        const photoURL = event.target.photoURL.value;
+        const photo = event.target.photoURL.value;
         const password = event.target.password.value;
 
-        // console.log(displayName, email, photoURL, password);
+        // console.log(name, email, photoURL, password);
 
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user)
                 form.reset();
+                updateUserData(user, name, photo)
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage)
             });
+
+        // Update user Data
+        const updateUserData = (user, name, photo) => {
+            updateProfile(user, {
+                displayName: name, photoURL: photo
+            }).then(() => {
+                console.log('Username updated!')
+                // ...
+            }).catch((error) => {
+                console.log(error)
+                // ...
+            });
+        }
     }
     return (
         <div className='mx-auto container'>
