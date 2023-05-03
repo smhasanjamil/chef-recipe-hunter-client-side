@@ -4,20 +4,30 @@ import { AuthContext } from '../../providers/AuthProviders';
 
 const Register = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, createUser } = useContext(AuthContext);
 
-    console.log(user)
+    // console.log(createUser)
 
     const handleSignUp = (event) => {
         event.preventDefault();
         // console.log(event.target.name.value);
 
-        const name = event.target.name.value;
+        const displayName = event.target.name.value;
         const email = event.target.email.value;
         const photoURL = event.target.photoURL.value;
         const password = event.target.password.value;
 
-        console.log(name, email, photoURL, password);
+        // console.log(displayName, email, photoURL, password);
+
+        createUser(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
     }
     return (
         <div className='mx-auto container'>
