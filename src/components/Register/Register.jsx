@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProviders';
 
 const Register = () => {
+
+    const { user } = useContext(AuthContext);
+
+    console.log(user)
+
     const handleSignUp = (event) => {
         event.preventDefault();
         // console.log(event.target.name.value);
@@ -19,7 +25,7 @@ const Register = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up to create an account.</h1>
+                        <h1 className="text-3xl font-bold">Sign up to create an account.</h1>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSignUp} className="card-body">
