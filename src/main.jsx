@@ -13,6 +13,8 @@ import Blog from './components/Blog/Blog.jsx';
 import Register from './components/Register/Register.jsx';
 import Login from './components/Login/Login.jsx';
 import AuthProviders from './providers/AuthProviders.jsx';
+import Chef from './components/Chef/Chef.jsx';
+import ChefRecipes from './components/ChefRecipes/ChefRecipes.jsx';
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/chef",
+        element: <Chef />,
+      },
+      {
+        path: ":id",
+        element: <ChefRecipes />,
       },
       {
         path: "/blog",
