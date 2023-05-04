@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <div className='mx-auto'>
 
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("../../../public/pexels-horizon-content-3762069.jpg")` }}>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://i.ibb.co/VWkWCCf/pexels-horizon-content-3762069.jpg")` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
@@ -35,8 +35,8 @@ const Home = () => {
                 </div>
 
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="p-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="p-4">
                         <div className="card w-full">
                             <figure><img src="https://i.ibb.co/YXkZ2XH/01.jpg" alt="Shoes" /></figure>
                             <div className="card-body">
@@ -45,7 +45,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="p-4">
+                    <div className="p-4">
                         <div className="card w-full">
                             <figure><img src="https://i.ibb.co/LCr25BW/02.jpg" alt="Shoes" /></figure>
                             <div className="card-body">
@@ -54,7 +54,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="p-4">
+                    <div className="p-4">
                         <div className="card w-full ">
                             <figure><img src="https://i.ibb.co/b2RMDhb/03.jpg" alt="Shoes" /></figure>
                             <div className="card-body">

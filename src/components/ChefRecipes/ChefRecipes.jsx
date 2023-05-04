@@ -8,7 +8,7 @@ const ChefRecipes = () => {
     // console.log('Id: ', id);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allData/${id}`)
+        fetch(`https://forkandknife-server-smhasanjamil23-gmailcom.vercel.app/allData/${id}`)
             .then(res => res.json())
             .then(data => setChef(data.chef))
     }, []);

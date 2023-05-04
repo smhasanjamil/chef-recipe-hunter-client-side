@@ -10,7 +10,7 @@ const Chef = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/allData')
+        fetch('https://forkandknife-server-smhasanjamil23-gmailcom.vercel.app/allData')
             .then(res => res.json())
             .then(data => setChefData(data))
     }, [])
