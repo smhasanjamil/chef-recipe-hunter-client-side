@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { FaRegStar, FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
+
+
 const Chef = () => {
     const [chefData, setChefData] = useState([]);
 
@@ -27,7 +31,18 @@ const Chef = () => {
                             <h2 className="card-title">{allchef.name}</h2>
                             <p>Experience: {allchef.experience} Year</p>
                             <p>Number Of Recipes: {allchef.numRecipes} </p>
-                            <p>Rating: {allchef.likes}</p>
+                            <div>
+                                <Rating
+                                    readonly
+                                    placeholderRating={allchef.likes}
+                                    emptySymbol={<FaRegStar />}
+
+                                    placeholderSymbol={<FaStar />}
+                                    fullSymbol={<FaStar />}
+                                ></Rating>
+                                <span>{allchef.likes}</span>
+                            </div>
+
                             <div className="card-actions">
                                 <Link to={`/chef/${allchef?.id}`} className="btn">View Recipes</Link>
                             </div>
