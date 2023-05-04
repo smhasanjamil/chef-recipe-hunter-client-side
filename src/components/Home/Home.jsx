@@ -70,6 +70,70 @@ const Home = () => {
             </div>
 
 
+            <div className='mx-auto container my-10'>
+                <div className='text-center'>
+                    <h1 className='font-bold text-5xl'>Amazing Blog</h1>
+                    <p className='my-4'>From kitchen to your screen - explore our delectable world of food and recipes</p>
+                </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+
+                    <div className="card w-full bg-base-100 shadow-xl">
+                        <figure className="px-10 pt-10">
+                            <img src="https://i.ibb.co/xLxSrXZ/04.jpg" alt="Shoes" className="rounded-xl" />
+                        </figure>
+                        <div className="card-body ">
+                            <h2 className="card-title">5 Healthy and Delicious Vegetarian Recipes for a Nutritious Meal</h2>
+                            <p>Looking for some vegetarian recipe inspiration? Check out our hand-picked selection of healthy and delicious veggie dishes that are sure to please your taste buds and nourish your body</p>
+                            <div className="card-actions">
+                                <button className="btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card w-full bg-base-100 shadow-xl">
+                        <figure className="px-10 pt-10">
+                            <img src="https://i.ibb.co/2dz88W6/05.jpg" alt="Shoes" className="rounded-xl" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Quick and Easy Breakfast Recipes to Start Your Day Right</h2>
+                            <p>Don't skip breakfast - fuel your day with these simple and tasty breakfast recipes that are ready in no time. From smoothie bowls to breakfast sandwiches, we've got you covered!</p>
+                            <div className="card-actions">
+                                <button className="btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card w-full bg-base-100 shadow-xl">
+                        <figure className="px-10 pt-10">
+                            <img src="https://i.ibb.co/Y0cj5NT/06.jpg" alt="Shoes" className="rounded-xl" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">International Flavors: A Culinary Tour of Global Cuisines</h2>
+                            <p>Embark on a culinary journey around the world with our selection of international recipes that bring the flavors of different cultures to your plate. From Thai curries to Italian pasta dishes, expand your culinary horizons and satisfy your taste buds.</p>
+                            <div className="card-actions">
+                                <button className="btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card w-full bg-base-100 shadow-xl">
+                        <figure className="px-10 pt-10">
+                            <img src="https://i.ibb.co/nm240wC/07.jpg" alt="Shoes" className="rounded-xl" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Indulge Your Sweet Tooth: Decadent Dessert Recipes You Can't Resist</h2>
+                            <p>Life is short, so why not treat yourself to some delicious desserts? From classic cakes to creative confections, these dessert recipes are sure to satisfy your sweet tooth and leave you wanting more.</p>
+                            <div className="card-actions">
+                                <button className="btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
 
         </div>
     );
