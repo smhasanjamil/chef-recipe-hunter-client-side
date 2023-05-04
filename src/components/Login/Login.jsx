@@ -6,7 +6,7 @@ const Login = () => {
 
     const [wrongInfo, setwrongInfo] = useState("");
 
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -35,12 +35,25 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         // console.log('Clicked')
         googleSignIn()
-            .then((result) => {
-                const user = result.user;
+        .then((result) => {
+            const user = result.user;
                 console.log(user)
             }).catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
                 console.log(errorMessage)
+                setwrongInfo(errorMessage);
+            });
+    }
+
+    const handleGithubSignIn = () => {
+        console.log('Clicked');
+        githubSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            }).catch((error) => {
+                const errorMessage = error.message.replace("Firebase: ", "");
+                console.log(errorMessage);
                 setwrongInfo(errorMessage);
             });
     }
@@ -85,6 +98,14 @@ const Login = () => {
                                 <div className='flex flex-row items-center justify-center gap-4'>
                                     <div><img src="https://i.ibb.co/xHHxP1W/google-symbol.png" alt="logo" className='h-6 w-6' /></div>
                                     <div><p>Login With Google</p></div>
+                                </div>
+                            </button>
+                        </div>
+                        <div className="form-control pt-0 card-body">
+                            <button onClick={handleGithubSignIn} className="btn">
+                                <div className='flex flex-row items-center justify-center gap-4'>
+                                    <div><img src="https://i.ibb.co/txQQ2zg/github.png" alt="logo" className='h-6 w-6' /></div>
+                                    <div><p>Login With Github</p></div>
                                 </div>
                             </button>
                         </div>
