@@ -8,8 +8,14 @@ const Login = () => {
 
     const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    // To redirect to history
+    const from = location.state?.from?.pathname || '/chef'
+
     // const location = useLocation();
-    // const navigate = useNavigate();
+
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -25,6 +31,7 @@ const Login = () => {
                 const user = userCredential.user;
                 // console.log('Successfull Login', user);
                 form.reset();
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
@@ -40,6 +47,7 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 // console.log(user)
             }).catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
@@ -53,6 +61,7 @@ const Login = () => {
         githubSignIn()
             .then((result) => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 // console.log(user);
             }).catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
