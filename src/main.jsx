@@ -16,6 +16,8 @@ import AuthProviders from './providers/AuthProviders.jsx';
 import Chef from './components/Chef/Chef.jsx';
 import ChefRecipes from './components/ChefRecipes/ChefRecipes.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
+import NotFound from './components/NotFound/NotFound.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main />,
     children: [
+      {
+        path: "*",
+        element: <NotFound/>,
+      },
       {
         path: "/",
         element: <Home />,
