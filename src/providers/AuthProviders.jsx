@@ -11,6 +11,7 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // User sign Up
     const createUser = (email, password) => {
@@ -44,6 +45,7 @@ const AuthProviders = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             // console.log('LoggedIn ', currentUser);
             setUser(currentUser);
+            setLoading(false);
         });
         return () => {
             unsubscribe();
@@ -56,7 +58,8 @@ const AuthProviders = ({ children }) => {
         signIn,
         googleSignIn,
         githubSignIn,
-        logOut
+        logOut,
+        loading
     }
 
 
