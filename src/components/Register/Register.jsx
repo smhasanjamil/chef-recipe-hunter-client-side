@@ -34,13 +34,13 @@ const Register = () => {
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
+                // console.log(user)
                 form.reset();
                 updateUserData(user, name, photo)
             })
             .catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
-                console.log(errorMessage)
+                // console.log(errorMessage)
                 setWrongPassword(errorMessage);
                 form.reset();
                 
@@ -51,10 +51,10 @@ const Register = () => {
             updateProfile(user, {
                 displayName: name, photoURL: photo
             }).then(() => {
-                console.log('Username updated!')
+                // console.log('Username updated!')
                 // ...
             }).catch((error) => {
-                console.log(error)
+                // console.log(error)
                 // ...
             });
         }

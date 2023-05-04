@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleChefRecipes = ({ rec }) => {
     const [disabled, setDisabled] = useState(false);
@@ -6,6 +8,7 @@ const SingleChefRecipes = ({ rec }) => {
 
     const handleOnClick = () => {
         setDisabled(true);
+        toast("Added to Favourite!");
     }
     return (
         <div>
@@ -16,7 +19,7 @@ const SingleChefRecipes = ({ rec }) => {
                 <div className="card-body">
                     <h2 className="card-title">{rec.name}</h2>
                     <p className='font-bold'>Ingredients:</p>
-                    <p>{rec?.ingredients?.map(data => <li>{data}</li>)}</p>
+                    <p>{rec?.ingredients?.map((data, index) => <li key={index}>{data}</li>)}</p>
                     <p className='font-bold'>Cooking method:</p>
                     <p>{rec.method}</p>
                     <p className='font-bold'>Rating : {rec.rating}</p>
@@ -26,6 +29,7 @@ const SingleChefRecipes = ({ rec }) => {
                 </div>
             </div>
 
+            <ToastContainer />
 
         </div>
     );

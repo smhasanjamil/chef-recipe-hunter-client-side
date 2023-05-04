@@ -5,7 +5,7 @@ import SingleChefRecipes from '../SingleChefRecipes/SingleChefRecipes';
 const ChefRecipes = () => {
     const [chef, setChef] = useState("");
     const { id } = useParams();
-    console.log('Id: ', id);
+    // console.log('Id: ', id);
 
     useEffect(() => {
         fetch(`http://localhost:5000/allData/${id}`)
@@ -13,7 +13,7 @@ const ChefRecipes = () => {
             .then(data => setChef(data.chef))
     }, []);
 
-    console.log(chef);
+    // console.log(chef);
     return (
         <div className='mx-auto container my-10'>
 
@@ -36,7 +36,7 @@ const ChefRecipes = () => {
 
 
 
-                {chef?.recipes?.map(rec => <SingleChefRecipes rec={rec}></SingleChefRecipes>)}
+                {chef?.recipes?.map((rec, index) => <SingleChefRecipes rec={rec} key={index}></SingleChefRecipes>)}
 
             </div>
 

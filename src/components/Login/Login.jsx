@@ -23,12 +23,12 @@ const Login = () => {
         signIn(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log('Successfull Login', user);
+                // console.log('Successfull Login', user);
                 form.reset();
             })
             .catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
-                console.log(errorMessage);
+                // console.log(errorMessage);
                 setwrongInfo(errorMessage);
                 form.reset();
             });
@@ -40,10 +40,10 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
             }).catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
-                console.log(errorMessage)
+                // console.log(errorMessage)
                 setwrongInfo(errorMessage);
             });
     }
@@ -53,10 +53,10 @@ const Login = () => {
         githubSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
             }).catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
-                console.log(errorMessage);
+                // console.log(errorMessage);
                 setwrongInfo(errorMessage);
             });
     }
