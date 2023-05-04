@@ -6,7 +6,7 @@ const Login = () => {
 
     const [wrongInfo, setwrongInfo] = useState("");
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -30,6 +30,19 @@ const Login = () => {
                 form.reset();
             });
 
+    }
+
+    const handleGoogleSignIn = () => {
+        // console.log('Clicked')
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user)
+            }).catch((error) => {
+                const errorMessage = error.message.replace("Firebase: ", "");
+                console.log(errorMessage)
+                setwrongInfo(errorMessage);
+            });
     }
     return (
         <div className='mx-auto container'>
@@ -67,6 +80,14 @@ const Login = () => {
                                 <button className="btn">Sign In With Email</button>
                             </div>
                         </form>
+                        <div className="form-control pt-0 card-body">
+                            <button onClick={handleGoogleSignIn} className="btn">
+                                <div className='flex flex-row items-center justify-center gap-4'>
+                                    <div><img src="https://i.ibb.co/xHHxP1W/google-symbol.png" alt="logo" className='h-6 w-6' /></div>
+                                    <div><p>Login With Google</p></div>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
