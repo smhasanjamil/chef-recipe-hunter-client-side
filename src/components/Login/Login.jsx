@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const Login = () => {
@@ -7,6 +7,9 @@ const Login = () => {
     const [wrongInfo, setwrongInfo] = useState("");
 
     const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
+
+    // const location = useLocation();
+    // const navigate = useNavigate();
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -35,8 +38,8 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         // console.log('Clicked')
         googleSignIn()
-        .then((result) => {
-            const user = result.user;
+            .then((result) => {
+                const user = result.user;
                 console.log(user)
             }).catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
