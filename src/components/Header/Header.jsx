@@ -19,9 +19,9 @@ const Header = () => {
             });
     }
     return (
-        <div className='nav-container'>
+        <div className='nav-container bg-gray-900'>
 
-            <nav className="navbar mx-auto md:container">
+            <nav className="navbar mx-auto md:container bg-gray-900">
                 <div className="navbar-logo">
                     <NavLink to="/">Fork And Knife</NavLink>
                 </div>
