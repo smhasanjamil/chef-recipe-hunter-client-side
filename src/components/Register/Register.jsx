@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { updateProfile } from 'firebase/auth';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Register = () => {
 
     const [wrongpassword, setWrongPassword] = useState("");
@@ -24,17 +27,18 @@ const Register = () => {
         // console.log(name, email, photoURL, password);
 
         // Password validation
-    if (password.length < 8 || !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-        const errorMessage = "Password must be a minimum of eight characters and contain at least one letter and one number.";
-        setWrongPassword(errorMessage);
-        return;
-    }
-    
+        if (password.length < 8 || !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+            const errorMessage = "Password must be a minimum of eight characters and contain at least one letter and one number.";
+            setWrongPassword(errorMessage);
+            return;
+        }
+
 
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 // console.log(user)
+                toast("Successfully Register");
                 form.reset();
                 updateUserData(user, name, photo)
             })
@@ -43,7 +47,7 @@ const Register = () => {
                 // console.log(errorMessage)
                 setWrongPassword(errorMessage);
                 form.reset();
-                
+
             });
 
         // Update user Data
@@ -107,6 +111,8 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+
+            <ToastContainer />
 
         </div>
     );
