@@ -7,8 +7,13 @@
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-    color: #fff;
+    color: #d4d0d0;
     padding: 10px;
+}
+
+.navbar a.active{
+    font-weight: bolder;
+    color: #ffffff;
 }
 
 .navbar-logo a {

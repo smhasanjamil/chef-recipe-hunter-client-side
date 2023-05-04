@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './Header.css'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const Header = () => {
@@ -23,20 +23,20 @@ const Header = () => {
 
             <nav className="navbar mx-auto md:container">
                 <div className="navbar-logo">
-                    <Link to="/">Fork And Knife</Link>
+                    <NavLink to="/">Fork And Knife</NavLink>
                 </div>
                 <ul className={isOpen ? "navbar-links active" : "navbar-links"}>
                     <li className="navbar-item">
-                        <Link to="/">Home</Link>
+                        <NavLink to="/">Home</NavLink>
                     </li>
                     <li className="navbar-item">
-                        <Link to="/blog">Blog</Link>
+                        <NavLink to="/blog">Blog</NavLink> 
                     </li>
                     {!user && <li className="navbar-item">
-                        <Link to="/login">Login</Link>
+                        <NavLink to="/login">Login</NavLink>
                     </li>}
                     {!user && <li className="navbar-item">
-                        <Link to="/register">Register</Link>
+                        <NavLink to="/register">Register</NavLink>
                     </li>}
                     {user ?
                         <span className='flex flex-col md:flex-row gap-5 items-center'>
