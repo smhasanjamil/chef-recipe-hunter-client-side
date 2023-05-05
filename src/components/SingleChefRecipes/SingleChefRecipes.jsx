@@ -4,6 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
+import LazyLoad from 'react-lazy-load';
+
 
 const SingleChefRecipes = ({ rec }) => {
     const [disabled, setDisabled] = useState(false);
@@ -16,6 +18,7 @@ const SingleChefRecipes = ({ rec }) => {
     return (
         <div>
 
+<LazyLoad>
 
             <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure><img src={rec.picture} alt="Food" className='rounded w-screen' /></figure>
@@ -43,7 +46,7 @@ const SingleChefRecipes = ({ rec }) => {
                     </div>
                 </div>
             </div>
-
+            </LazyLoad>
             <ToastContainer />
 
         </div>
