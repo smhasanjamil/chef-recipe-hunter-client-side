@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SingleChefRecipes from '../SingleChefRecipes/SingleChefRecipes';
 
+import { FaRegStar, FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
+
 const ChefRecipes = () => {
     const [chef, setChef] = useState("");
     const { id } = useParams();
@@ -25,9 +28,19 @@ const ChefRecipes = () => {
                 <div className='flex flex-col gap-2'>
                     <h1 className="font-bold text-5xl">Name: {chef?.name}</h1>
                     <p className="font-bold text-xl">About: {chef?.bio}</p>
-                    <p className="font-bold text-xl">Rating: {chef?.likes}</p>
                     <p className="font-bold text-xl">Num of Recipes: {chef?.numRecipes}</p>
                     <p className="font-bold text-xl">Experience: {chef?.experience} years</p>
+                    <div className='flex gap-2 flex-row items-center my-4'>
+                        <Rating
+                            readonly
+                            placeholderRating={chef?.likes}
+                            emptySymbol={<FaRegStar />}
+
+                            placeholderSymbol={<FaStar />}
+                            fullSymbol={<FaStar />}
+                        ></Rating>
+                        <span>{chef?.likes}</span>
+                    </div>
                 </div>
             </div>
 

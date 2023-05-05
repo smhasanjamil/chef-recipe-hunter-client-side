@@ -36,7 +36,7 @@ const Chef = () => {
                                     <h2 className="card-title">{allchef.name}</h2>
                                     <p>Experience: {allchef.experience} Year</p>
                                     <p>Number Of Recipes: {allchef.numRecipes} </p>
-                                    <div>
+                                    <div className='flex gap-2 flex-row items-center justify-center'>
                                         <Rating
                                             readonly
                                             placeholderRating={allchef.likes}

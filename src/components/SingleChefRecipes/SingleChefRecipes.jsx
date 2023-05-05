@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { FaRegStar, FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
+
 const SingleChefRecipes = ({ rec }) => {
     const [disabled, setDisabled] = useState(false);
     // console.log(rec)
@@ -22,7 +25,19 @@ const SingleChefRecipes = ({ rec }) => {
                     <p>{rec?.ingredients?.map((data, index) => <li key={index}>{data}</li>)}</p>
                     <p className='font-bold'>Cooking method:</p>
                     <p>{rec.method}</p>
-                    <p className='font-bold'>Rating : {rec.rating}</p>
+
+                    <div className='flex gap-2 flex-row items-center my-4'>
+                        <Rating
+                            readonly
+                            placeholderRating={rec.rating}
+                            emptySymbol={<FaRegStar />}
+
+                            placeholderSymbol={<FaStar />}
+                            fullSymbol={<FaStar />}
+                        ></Rating>
+                        <span>{rec.rating}</span>
+                    </div>
+
                     <div className="card-actions">
                         <button disabled={disabled} onClick={handleOnClick} className="btn">Add to Favourite</button>
                     </div>
