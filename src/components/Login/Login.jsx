@@ -34,10 +34,22 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-                const errorMessage = error.message.replace("Firebase: ", "");
+                // const errorMessage = error.message.replace("Firebase: ", "");
+                // setwrongInfo(errorMessage);
                 // console.log(errorMessage);
-                setwrongInfo(errorMessage);
-                form.reset();
+
+                const errorCode = error.code;
+
+                if (errorCode === "auth/invalid-email" || errorCode === "auth/user-not-found") {
+                    setwrongInfo("The email you entered is invalid or not registered.");
+                } else if (errorCode === "auth/wrong-password") {
+                    setwrongInfo("The password you entered is incorrect.");
+                } else {
+                    setwrongInfo("Something went wrong. Please try again.");
+                }
+
+
+                
             });
 
     }
