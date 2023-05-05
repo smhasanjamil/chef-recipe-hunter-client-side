@@ -3,6 +3,7 @@ import { AuthContext } from '../../providers/AuthProviders';
 import './Home.css'
 import Chef from '../Chef/Chef';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
@@ -21,7 +22,11 @@ const Home = () => {
                 </div>
             </div>
 
-            <Chef />
+
+            <LazyLoad>
+                <Chef />
+            </LazyLoad>
+
 
 
 
@@ -72,7 +77,7 @@ const Home = () => {
 
             <div className='mx-auto container my-10'>
                 <div className='text-center'>
-                    <h1 className='font-bold text-5xl'>Amazing Blog</h1>
+                    <h1 className='font-bold text-5xl'>Amazing Food Blog</h1>
                     <p className='my-4'>From kitchen to your screen - explore our delectable world of food and recipes</p>
                 </div>
 

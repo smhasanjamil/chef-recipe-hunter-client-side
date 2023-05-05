@@ -21,6 +21,7 @@ const Chef = () => {
         <div className='mx-auto container my-10 '>
             <div className='text-center text-5xl font-bold underline'><h1>Chef</h1></div>
             <div>
+         
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 
 
@@ -61,6 +62,8 @@ const Chef = () => {
 
                 </div>
             </div>
+
+
         </div>
 
     );
