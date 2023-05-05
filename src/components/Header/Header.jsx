@@ -32,6 +32,9 @@ const Header = () => {
                     <li className="navbar-item">
                         <NavLink to="/blog">Blog</NavLink> 
                     </li>
+                    <li className="navbar-item">
+                        <NavLink to="/about">About Us</NavLink> 
+                    </li>
                     {!user && <li className="navbar-item">
                         <NavLink to="/login">Login</NavLink>
                     </li>}

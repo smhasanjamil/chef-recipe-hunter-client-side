@@ -17,6 +17,7 @@ import Chef from './components/Chef/Chef.jsx';
 import ChefRecipes from './components/ChefRecipes/ChefRecipes.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
+import AboutUs from './components/AboutUs/AboutUs.jsx';
 
 
 
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "*",
-        element: <NotFound/>,
+        element: <NotFound />,
       },
       {
         path: "/",
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
       },
       {
         path: "/register",
