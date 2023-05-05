@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { updateProfile } from 'firebase/auth';
 
@@ -12,6 +12,8 @@ const Register = () => {
 
     const { user, createUser } = useContext(AuthContext);
 
+
+    const navigate = useNavigate();
     // console.log(createUser)
 
     const handleSignUp = (event) => {
@@ -27,26 +29,61 @@ const Register = () => {
         // console.log(name, email, photoURL, password);
 
         // Password validation
-        if (password.length < 8 || !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-            const errorMessage = "Password must be a minimum of eight characters and contain at least one letter and one number.";
+        // if (password.length < 8 || !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+        //     const errorMessage = "Password must be a minimum of eight characters and contain at least one letter and one number.";
+        //     setWrongPassword(errorMessage);
+        //     return;
+        // }
+
+
+
+        if (!password) {
+            const errorMessage = "Please enter a password.";
             setWrongPassword(errorMessage);
             return;
-        }
+          }
+          
+          if (password.length < 8) {
+            const errorMessage = "Password must be at least 8 characters long.";
+            setWrongPassword(errorMessage);
+            return;
+          }
+          
+          if (!/(?=.*[A-Za-z])/.test(password)) {
+            const errorMessage = "Password must contain at least one letter.";
+            setWrongPassword(errorMessage);
+            return;
+          }
+          
+          if (!/(?=.*\d)/.test(password)) {
+            const errorMessage = "Password must contain at least one number.";
+            setWrongPassword(errorMessage);
+            return;
+          }
+          
+          // Password meets all requirements
+          setWrongPassword(null);
+          
+
+
 
 
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 // console.log(user)
-                toast("Successfully Register");
+                
                 form.reset();
                 updateUserData(user, name, photo)
+
+                navigate("/");
+                toast("Successfully Register");
             })
             .catch((error) => {
                 const errorMessage = error.message.replace("Firebase: ", "");
                 // console.log(errorMessage)
                 setWrongPassword(errorMessage);
-                form.reset();
+                // form.reset();
 
             });
 
@@ -55,6 +92,7 @@ const Register = () => {
             updateProfile(user, {
                 displayName: name, photoURL: photo
             }).then(() => {
+                form.reset();
                 // console.log('Username updated!')
                 // ...
             }).catch((error) => {
