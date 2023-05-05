@@ -8,11 +8,15 @@ import Rating from 'react-rating';
 const Chef = () => {
     const [chefData, setChefData] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
+        setLoading(true);
         fetch('https://forkandknife-server-smhasanjamil23-gmailcom.vercel.app/allData')
             .then(res => res.json())
-            .then(data => setChefData(data))
+            .then(data => setChefData(data));
+            setLoading(false);
     }, [])
 
     // console.log(chefData);
@@ -21,7 +25,7 @@ const Chef = () => {
         <div className='mx-auto container my-10 '>
             <div className='text-center text-5xl font-bold underline'><h1>Chef</h1></div>
             <div>
-         
+
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 
 
@@ -63,6 +67,7 @@ const Chef = () => {
                 </div>
             </div>
 
+{loading && <progress className="progress w-56"></progress>}
 
         </div>
 
